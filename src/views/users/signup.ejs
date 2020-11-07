@@ -23,10 +23,10 @@
       </ul>
     </header>
 
-    <div class='container'>
-      <div class='row justify-content-center'>
+    <div class="container">
+      <div class="row justify-content-center">
         <!-- フォーム -->
-        <form class='col-7 mt-3 border pl-0 pr-0' action="/home" method="post" onsubmit="return checkForm()">
+        <form class="col-7 mt-3 border pl-0 pr-0" action="/home" method="post" onsubmit="return checkForm()">
 
           <div class="alert alert-secondary w-100" role="alert">
             Register
@@ -36,7 +36,7 @@
             <div class="col-3 d-flex justify-content-end">
               <div for="exampleInputName ">Name</div>
             </div>
-            <input type="text" class="form-control col-7" id="NameForm" aria-describedby="nameHelp" placeholder="Enter name">
+            <input type="text" class="form-control col-7" id="NameForm" name= "name" aria-describedby="nameHelp" placeholder="Enter name">
           </div>
           <div class="d-flex justify-content-center">
             <span id="error-name-null" class="d-none mb-3 text-danger">必ず入力してください</span>
@@ -46,7 +46,7 @@
             <div class="col-3 d-flex justify-content-end">
               <div for="exampleInputEmail1 ">Email address</div>
             </div>
-            <input type="email" class="form-control col-7" id="EmailForm" aria-describedby="emailHelp" placeholder="Enter email">
+            <input type="email" class="form-control col-7" id="EmailForm" name="email" aria-describedby="emailHelp" placeholder="Enter email">
           </div>
           <div class="d-flex justify-content-center">
             <span id="error-mail-null" class="d-none mb-3 text-danger">必ず入力してください</span>
@@ -56,7 +56,7 @@
             <div class="col-3 d-flex justify-content-end">
               <div for="exampleInputEmail1 ">Password</div>
             </div>
-            <input type="password" class="form-control col-7" id="PasswordForm" placeholder="Password">
+            <input type="password" class="form-control col-7" id="PasswordForm" name="password" placeholder="Password">
           </div>
           <div class="d-flex justify-content-center">
             <span id="error-password-null" class="d-none mb-3 text-danger">必ず入力してください</span>
@@ -69,7 +69,7 @@
             <div class="col-3 d-flex justify-content-end">
               <div for="exampleInputEmail1 ">Confirm Password</div>
             </div>
-            <input type="password" class="form-control col-7" id="confirmPasswordForm" placeholder="Confirm Password">
+            <input type="password" class="form-control col-7" id="confirmPasswordForm" name="confirmPassword" placeholder="Confirm Password">
           </div>
           <div class="d-flex justify-content-center">
             <span id="differencePassword" class="d-none mb-3 text-danger">一致していません</span>
@@ -86,7 +86,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script type="text/javascript" src='/javascript/validator.js'></script>
+    <script type="text/javascript" src="/javascript/validator.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
