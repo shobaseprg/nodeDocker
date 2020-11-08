@@ -8,7 +8,13 @@ router.post("/", [
   // checkメソッドを使用してバリデーションを実行
   check('name').not().isEmpty(),
   check('email').not().isEmpty(),
-  check('password').not().isEmpty().isLength({ min: 7 }),
+  check('password').not().isEmpty().isLength({ min: 7 }).
+    custom((value, { req }) => {
+      if (req.body.password !== req.body.confirmPassword) {
+        throw new Error('不一致');
+      }
+      return true;
+    }),
   check('confirmPassword').not().isEmpty()
 ],
   function (req, res, next) {
