@@ -1,4 +1,5 @@
 FROM node:12
 WORKDIR /src
-RUN npm install ejs
+RUN npm install ejs\
+  express-validator
 CMD /bin/bash
