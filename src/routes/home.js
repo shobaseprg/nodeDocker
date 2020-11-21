@@ -1,31 +1,25 @@
 const express = require("express");
+const app = express();
 const router = express.Router();
-const { check, validationResult } = require('express-validator');
+const session = require("express-session");
+
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    maxage: 1000 * 60 * 30
+  }
+}));
 
 
 /* GET users listing. */
-router.post("/", [
-  // checkメソッドを使用してバリデーションを実行
-  check('name').not().isEmpty(),
-  check('email').not().isEmpty(),
-  check('password').not().isEmpty().isLength({ min: 7 }).
-    custom((value, { req }) => {
-      if (req.body.password !== req.body.confirmPassword) {
-        throw new Error('不一致');
-      }
-      return true;
-    }),
-  check('confirmPassword').not().isEmpty()
-],
-  function (req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      console.log(errors.array())
+router.get('/', function (req, res, next) {
+  console.log(req.session);
+  res.render('home', { name: req.session });
+});
 
-      return res.status(422).json({ errors: errors.array() });
-    }
-
-    res.render("home", { name: req.body.name });
-  });
 
 module.exports = router;

@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
   <header>
     <ul class="nav justify-content-end border">
       <li class="nav-item">
@@ -25,11 +24,14 @@
       </li>
     </ul>
   </header>
+  <% messages.forEach((message) => { %>
+  <p><%= message %></p>
+  <% }); %>
 
   <div class="container">
     <div class="row justify-content-center">
       <!-- フォーム -->
-      <form class="col-7 mt-3 border pl-0 pr-0" action="/home" method="post">
+      <form class="col-7 mt-3 border pl-0 pr-0" action="/users/signup" method="post">
 
         <div class="alert alert-secondary w-100" role="alert">
           Register
@@ -92,7 +94,7 @@
 
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script type="text/javascript" src="/javascript/validator.js"></script>
+  <!-- <script type="text/javascript" src="/javascript/validator.js"></script> -->
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
