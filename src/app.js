@@ -13,6 +13,17 @@ const homeRouter = require("./routes/home");
 
 const app = express();
 
+app.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    secure: false,
+    maxage: 1000 * 60 * 30
+  }
+}));
+
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

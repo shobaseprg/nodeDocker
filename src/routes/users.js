@@ -3,18 +3,8 @@ const app = express();
 
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const session = require("express-session");
+// const session = require("express-session");
 
-app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-    maxage: 1000 * 60 * 30
-  }
-}));
 /* GET users listing. */
 router.get('/login', function (req, res, next) {
   res.render('users/login');
@@ -47,7 +37,7 @@ router.post("/signup", [
       });
       res.render('users/signup', { messages: messages })
     } else {
-      req.session = req.body.name;
+      req.session.name = req.body.name;
       console.log(req.session);
       res.redirect("/home");
     }
