@@ -1,7 +1,7 @@
 const createError = require("http-errors");
 const express = require("express");
-const { check, validationResult } = require('express-validator');
-const session = require("express-session");
+// const { check, validationResult } = require('express-validator');
+// const session = require("express-session");
 
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -13,16 +13,16 @@ const homeRouter = require("./routes/home");
 
 const app = express();
 
-app.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    httpOnly: true,
-    secure: false,
-    maxage: 1000 * 60 * 30
-  }
-}));
+// app.use(session({
+//   secret: 'secret',
+//   resave: false,
+//   saveUninitialized: false,
+//   cookie: {
+//     httpOnly: true,
+//     secure: false,
+//     maxage: 1000 * 60 * 30
+//   }
+// }));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
