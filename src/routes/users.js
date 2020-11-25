@@ -1,9 +1,7 @@
 const express = require('express');
-const app = express();
-
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-// const session = require("express-session");
+// const session = require('express-session');
 
 /* GET users listing. */
 router.get('/login', function (req, res, next) {
@@ -15,7 +13,7 @@ router.get('/signup', function (req, res, next) {
   res.render('users/signup', { messages: messages })
 });
 
-router.post("/signup", [
+router.post('/signup', [
   // checkメソッドを使用してバリデーションを実行
   check('name').not().isEmpty().withMessage('名前は必須です'),
   check('email').not().isEmpty().withMessage('メールは必須です'),
@@ -39,7 +37,7 @@ router.post("/signup", [
     } else {
       req.session.name = req.body.name;
       console.log(req.session);
-      res.redirect("/home");
+      res.redirect('/home');
     }
   });
 
