@@ -1,6 +1,6 @@
-
 const { check, validationResult } = require('express-validator');
-const validation_rule = [
+
+const rules = [
   // checkメソッドを使用してバリデーションを実行
   check('name').not().isEmpty().withMessage('名前は必須です'),
   check('email').not().isEmpty().withMessage('メールは必須です'),
@@ -14,23 +14,21 @@ const validation_rule = [
     }).withMessage('パスワードが一致しません。')
 ]
 
-const validate =
-  function (req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      let messages = [];
-      errors.errors.forEach((error) => {
-        messages.push(error.msg);
-      });
-      res.render('users/signup', { messages: messages })
-    } else {
-      req.session.name = req.body.name;
-      console.log(req.session);
-      res.redirect('/home');
-    }
+function validate(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let messages = [];
+    errors.errors.forEach((error) => {
+      messages.push(error.msg);
+    });
+    res.render('users/signup', { messages: messages })
+  } else {
+    req.session.name = req.body.name;
+    console.log(req.session);
+    res.redirect('/home');
   }
+}
 
-module.exports = [
-  validation_rule,
-  validate
-]
+module.exports =
+  { rules, validate }
+  ;
