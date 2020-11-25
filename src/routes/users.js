@@ -26,19 +26,21 @@ router.post('/signup', [
       }
     }).withMessage('パスワードが一致しません。')
 ],
-  function (req, res, next) {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      let messages = [];
-      errors.errors.forEach((error) => {
-        messages.push(error.msg);
-      });
-      res.render('users/signup', { messages: messages })
-    } else {
-      req.session.name = req.body.name;
-      console.log(req.session);
-      res.redirect('/home');
-    }
-  });
+  val
+);
 
+function val(req, res, next) {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let messages = [];
+    errors.errors.forEach((error) => {
+      messages.push(error.msg);
+    });
+    res.render('users/signup', { messages: messages })
+  } else {
+    req.session.name = req.body.name;
+    console.log(req.session);
+    res.redirect('/home');
+  }
+}
 module.exports = router;
